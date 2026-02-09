@@ -1,7 +1,7 @@
 # 🎮 P의 거짓 모작 포트폴리오
 
 ## 📺 메인 이미지
-<img width="2554" height="1386" alt="image" src="https://github.com/user-attachments/assets/5825da84-9dd2-4bb7-8ff7-5562d6121012" />
+<img width="2554" height="1386" alt="image" src="Image/BG.png" />
 
 
 ## 📺 영상 데모
