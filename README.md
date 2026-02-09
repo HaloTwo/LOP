@@ -13,37 +13,36 @@
 ## 📝 기본적인 GIF
 
 <details>
-<summary> 클릭해서 열기 / 닫기</summary>
 
 ### 1. 재질별 충돌 파티클
 | 재질별(철, 나무, 돌) 충돌 파티클 |
 |----------|
-![과제1](과제1-min.gif)
+![과제1](Image/1.gif)
 
 ---
 
 ### 2. 공격 캔슬
 | 1타 공격 | 연속 공격 |
 |----------|---------------|
-| ![과제2-1타](과제2.1타만-min.gif) | ![과제2-2타](과제2.2타연속-min.gif) |
+| ![과제2-1타](Image/2-1.gif) | ![과제2-2타](Image/2-2.gif) |
 
 ---
 
 ### 3. 무기별 공격 보정 및 판정
 | Saber | Rapier | Bayonet |
 |-------|--------|---------|
-| ![Saber](과제3.Saber.gif) | ![Rapier](과제3.Repair.gif) | ![Bayonet](과제3.Bayonet.gif) |
+| ![Saber](Image/3.Saber.gif) | ![Rapier](Image/3.Repair.gif) | ![Bayonet](Image/3.Bayonet.gif) |
 
 ---
 
 ### 4. 보스
 | 1 Phase Boss 1 | 1 Phase Boss 2 |
 |--------|--------|
-| ![Boss1](과제4.Boss1-min.gif) | ![Boss2](과제4.Boss2-min.gif) |
+| ![Boss1](Image/4.Boss1.gif) | ![Boss2](Image/4.Boss2.gif) |
 
 | 2 Phase Boss 1 | 2 Phase Boss 2 |
 |--------|--------|
-| ![Boss3](과제4.Boss3-min.gif) | ![Boss4](과제4.Boss4-min.gif) |
+| ![Boss3](Image/4.Boss3.gif) | ![Boss4](Image/4.Boss4.gif) |
 
 
 </details>
