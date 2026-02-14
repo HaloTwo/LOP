@@ -1,20 +1,21 @@
-# ⚔️ UE5 Action RPG (Lies of P Inspired)
+# 🎮 P의 거짓 (Lies of P) 모작 포트폴리오
 
-> ‘P의 거짓(Lies of P)’ 전투 구조를 레퍼런스로 제작한  
-> Unreal Engine 5 기반 3인칭 액션 전투 시스템 포트폴리오입니다.  
-> (전투 시스템, AI, Lock-On, Gameplay Architecture 중심 구현)
+## 📺 메인 이미지
+<img width="2554" height="1386" alt="Main" src="Image/BG.png" />
 
 ---
 
-## 📌 Project Info
+# ⚔️ 프로젝트 개요
+> Unreal Engine 5 기반 3인칭 액션 전투 시스템 프로젝트  
+> (Lies of P 전투 구조 레퍼런스)
+
 > • 개발 인원: 1인 (개인 프로젝트)  
 > • 개발 기간: 2025.07.07 ~ 2025.09.21 (11주)  
-> • 개발 환경: Unreal Engine 5.4.4, C++, Blueprint, GitHub  
-> • 장르: 3인칭 액션 RPG (Combat System Focus)  
----
+> • 개발 환경: Unreal Engine 5.4.4, C++, Blueprint  
+> • 장르: 3인칭 액션 RPG / 전투 시스템 중심  
 
 ## 🎥 Demo Video
-[![영상 미리보기](https://img.youtube.com/vi/영상ID/0.jpg)](유튜브링크)
+[![영상 미리보기](https://img.youtube.com/vi/6_0rvUXyf8w/0.jpg)](https://youtu.be/6_0rvUXyf8w)
 
 ---
 
