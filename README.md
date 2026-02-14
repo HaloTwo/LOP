@@ -17,6 +17,39 @@
 ## 🎥 Demo Video
 [![영상 미리보기](https://img.youtube.com/vi/6_0rvUXyf8w/0.jpg)](https://youtu.be/6_0rvUXyf8w)
 
+# 🎮 Core Systems (코드 연동)
+
+## ⚔ Combat System (GAS 기반 전투 구조)
+> Gameplay Ability System(GAS)을 기반으로 전투 상태, 스킬, 판정 구조를 설계  
+> 공격 판정, 콤보 입력, 상태 전이를 시스템 단위로 분리 구현
+
+🔗 Code: (Combat / Ability 코드 링크)
+
+---
+
+## 🎯 Target Lock-On System
+> 주변 적 탐색 후 타겟 고정 및 카메라 보정 시스템 구현  
+> 전투 중 시점 유지 및 타겟 전환 로직 포함
+
+🔗 Code: (LockOn 코드 링크)
+
+---
+
+## 🧠 AI System (Behavior Tree + EQS)
+> Behavior Tree 기반 적 AI 상태 제어  
+> EQS를 활용한 플레이어 탐색 및 전투 진입 로직 구현  
+> 보스 Phase 전환 패턴 설계
+
+🔗 Code: (AI 코드 링크)
+
+---
+
+## 🎒 Inventory & Data Architecture
+> DataAsset 기반 무기 및 스킬 데이터 구조 설계  
+> 데이터 기반 장비 및 전투 시스템 연동 구조 구현
+
+🔗 Code: (Inventory / Data 코드 링크)
+
 ---
 
 # 🧪 Gameplay GIF (핵심 기능)
@@ -60,36 +93,3 @@
 | ![](Image/4.Boss2.gif) | ![](Image/4.Boss4.gif) |
 
 ---
-
-# 🎮 Core Systems (코드 연동)
-
-## ⚔ Combat System (GAS 기반 전투 구조)
-> Gameplay Ability System(GAS)을 기반으로 전투 상태, 스킬, 판정 구조를 설계  
-> 공격 판정, 콤보 입력, 상태 전이를 시스템 단위로 분리 구현
-
-🔗 Code: (Combat / Ability 코드 링크)
-
----
-
-## 🎯 Target Lock-On System
-> 주변 적 탐색 후 타겟 고정 및 카메라 보정 시스템 구현  
-> 전투 중 시점 유지 및 타겟 전환 로직 포함
-
-🔗 Code: (LockOn 코드 링크)
-
----
-
-## 🧠 AI System (Behavior Tree + EQS)
-> Behavior Tree 기반 적 AI 상태 제어  
-> EQS를 활용한 플레이어 탐색 및 전투 진입 로직 구현  
-> 보스 Phase 전환 패턴 설계
-
-🔗 Code: (AI 코드 링크)
-
----
-
-## 🎒 Inventory & Data Architecture
-> DataAsset 기반 무기 및 스킬 데이터 구조 설계  
-> 데이터 기반 장비 및 전투 시스템 연동 구조 구현
-
-🔗 Code: (Inventory / Data 코드 링크)
