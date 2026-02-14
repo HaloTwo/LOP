@@ -14,45 +14,152 @@
 > • 개발 환경: Unreal Engine 5.4.4, C++, Blueprint  
 > • 장르: 3인칭 액션 RPG / 전투 시스템 중심  
 
-## 🎥 Demo Video
+
+# 🔍 왜 Gameplay Ability System(GAS)을 선택했는가
+
+>이번 프로젝트는 단순히 전투 기능을 구현하는 것이 아니라,  
+>**확장성과 유지보수성을 고려한 전투 아키텍처 설계**에 초점을 두었습니다.
+
+>전투 로직을 Ability / GameplayEffect / GameplayTag 단위로 책임 분리하고,  
+>콘텐츠가 확장되더라도 분기문이 증가하지 않는 구조를 설계하고자  
+>Unreal Engine의 Gameplay Ability System(GAS)을 기반으로 구현했습니다.
+
+>또한, 임의로 시스템을 구성하기보다  
+>엔진이 제공하는 공식 아키텍처를 깊이 이해하고  
+>정석적인 방식으로 설계 경험을 쌓는 것을 목표로 했습니다.
+
+<details>
+<summary>자세한 설계 의도 펼치기/닫기</summary>
+  
+### 1️⃣ 구조적인 전투 시스템 설계
+
+GAS는 Ability, Effect, AttributeSet, Tag 기반 구조를 통해  
+전투 상태와 로직을 명확히 분리할 수 있는 아키텍처를 제공합니다.  
+단순히 동작하는 전투 시스템이 아니라  
+확장 가능한 구조를 설계하는 것이 목표였기 때문에 공식 프레임워크를 기반으로 구현했습니다.
+
+### 2️⃣ 실제 상용 프로젝트와 유사한 개발 방식 경험
+
+GAS는 멀티플레이, 예측 처리, 네트워크 동기화까지 고려된 구조입니다.  
+비록 이번 프로젝트는 싱글 기반이지만,  
+상용 게임에서 사용되는 구조를 이해하고 활용하는 경험을 쌓고자 선택했습니다.
+
+### 3️⃣ 직접 구현보다 설계에 집중하기 위함
+
+모든 기능을 커스텀 구현하는 대신  
+엔진이 제공하는 구조를 이해하고 활용하는 데 집중했습니다.
+이를 통해
+
+- Ability 단위 책임 분리
+- GameplayTag 기반 상태 제어
+- GameplayEffect 기반 수치 처리
+- 연출(GameplayCue)과 로직 분리
+
+구조 중심 설계를 경험하고자 했습니다.
+
+### 4️⃣ 확장성과 유지보수성 확보
+
+무기 추가, 스킬 추가, 보스 패턴 확장 시  
+로직 분기 증가가 아닌 Ability 추가 방식으로 확장되도록 설계했습니다.  
+이는 전투 콘텐츠가 늘어날수록 구조가 복잡해지는 문제를 방지하기 위함입니다.
+
+---
+</details>
+
+# 🎥 Video
 [![영상 미리보기](https://img.youtube.com/vi/6_0rvUXyf8w/0.jpg)](https://youtu.be/6_0rvUXyf8w)
 
-# 🎮 Core Systems (코드 연동)
+---
 
-## ⚔ Combat System (GAS 기반 전투 구조)
-> Gameplay Ability System(GAS)을 기반으로 전투 상태, 스킬, 판정 구조를 설계  
-> 공격 판정, 콤보 입력, 상태 전이를 시스템 단위로 분리 구현
-
-🔗 Code: (Combat / Ability 코드 링크)
+# 🎮 Core Systems
 
 ---
 
-## 🎯 Target Lock-On System
-> 주변 적 탐색 후 타겟 고정 및 카메라 보정 시스템 구현  
-> 전투 중 시점 유지 및 타겟 전환 로직 포함
+## ⚔ Combat Framework (GAS 기반 전투 구조)
 
-🔗 Code: (LockOn 코드 링크)
+이동, 공격, 구르기, 락온 등의 행동을 Ability 단위로 나누어 관리하고 있습니다.
 
----
+### 설계 방향
 
-## 🧠 AI System (Behavior Tree + EQS)
-> Behavior Tree 기반 적 AI 상태 제어  
-> EQS를 활용한 플레이어 탐색 및 전투 진입 로직 구현  
-> 보스 Phase 전환 패턴 설계
+- 공격 / 회피 / 스킬을 GameplayAbility로 분리
+- 수치 계산은 GameplayEffect로 위임
+- 상태는 GameplayTag로 관리
+- Anim Notify 기반 입력 타이밍 제어
+- 판정 로직과 연출(GameplayCue) 분리
 
-🔗 Code: (AI 코드 링크)
+캐릭터 클래스 내부에 로직을 계속 추가하는 방식 대신,  
+Ability 단위로 쪼개어 BP를 추가하면 쉽게 확장 가능한 형태를 유지하려고 했습니다.
 
----
-
-## 🎒 Inventory & Data Architecture
-> DataAsset 기반 무기 및 스킬 데이터 구조 설계  
-> 데이터 기반 장비 및 전투 시스템 연동 구조 구현
-
-🔗 Code: (Inventory / Data 코드 링크)
+또한 1인 프로젝트이기 때문에  
+과도하게 복잡한 범용 구조보다는  
+관리 가능한 선에서 확장성을 확보하는 것을 목표로 했습니다.
 
 ---
 
-# 🧪 Gameplay GIF (핵심 기능)
+## 🗡 Weapon Trace (무기 충돌 판정)
+
+무기 판정은 단순 Overlap이 아니라  
+Box Sweep 기반으로 구현했습니다.
+
+### 구현 방식
+
+- `SweepMultiByChannel()` 사용
+- 이전 프레임 위치와 현재 위치를 보간하여 궤적 기반 판정
+- HitActor 캐싱으로 중복 타격 방지
+- Physical Material 기반 재질별 파티클 분기
+
+빠른 공격 모션에서 피격 누락이 발생하지 않도록 하는 데 중점을 두었습니다.
+
+---
+
+## 🧠 AI System (BT + EQS + GAS)
+
+적 AI는 Behavior Tree 기반으로 구성했습니다.  
+공격은 플레이어와 동일하게 Ability를 사용하도록 설계했습니다.
+
+### 구성
+
+- Behavior Tree 기반 상태 제어
+- EQS 기반 위치 탐색
+- Ability 기반 공격 실행
+- Phase를 DataAsset으로 분리
+
+패턴을 추가할 때 코드를 수정하기보다  
+데이터를 추가하는 방식으로 확장할 수 있도록 구성했습니다.
+
+---
+
+## 🎯 Target Lock-On
+
+- Sphere 기반 타겟 탐색
+- 거리 / 시야각 기반 후보 선택
+- Camera Modifier 기반 회전 보정
+- GameplayTag로 락온 상태 관리
+
+락온 중에는 이동/대시 로직이 다르게 동작하도록 Ability에서 분기 처리했습니다.
+
+---
+
+## 🎒 Data Architecture
+
+전투 관련 대부분의 정보는 DataAsset으로 관리합니다.
+
+- 무기 정보
+- Ability 세트
+- 보스 Phase 데이터
+- 수치 정보(DataTable)
+
+코드 수정을 최소화하고,  
+필요하면 블루프린트나 데이터 수정만으로 확장 가능하도록 설계했습니다.
+
+
+---
+
+
+# 🧪 Gameplay GIF
+
+<details>
+<summary>GIF 펼치기/닫기</summary>
 
 ## 1. 🧱 재질별 충돌 파티클 시스템
 > 무기 충돌 시 재질(철/목재/석재)에 따라 다른 파티클이 출력되도록 구현
@@ -93,3 +200,5 @@
 | ![](Image/4.Boss2.gif) | ![](Image/4.Boss4.gif) |
 
 ---
+
+</details>
