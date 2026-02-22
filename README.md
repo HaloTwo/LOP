@@ -16,6 +16,16 @@
 > • 개발 환경: Unreal Engine 5.4.4, Github   
 > • 장르: 3인칭 액션 RPG / 전투 시스템 중심  
 
+---
+
+## 📑 Contents
+- [⚔ Combat Framework (GAS 기반 전투 구조)](#-combat-framework-gas-기반-전투-구조)
+- [🗡 Weapon Trace (무기 충돌 판정)](#-weapon-trace-무기-충돌-판정)
+- [🧠 AI System (BT + EQS + GAS)](#-ai-system-bt--eqs--gas)
+- [🎯 Target Lock-On](#-target-lock-on)
+- [🎒 Data Architecture](#-data-architecture)
+- [🧪 Gameplay GIF](#-gameplay-gif)
+
 
 # 🔍 왜 Gameplay Ability System(GAS)을 선택했는가
 
@@ -93,15 +103,20 @@ GAS는 멀티플레이, 예측 처리, 네트워크 동기화까지 고려된 �
 
 코어 로직은 C++(ASC/Ability 베이스)로 구현하고, 파생 Ability는 C++/BP로 분리해 데이터·연출은 BP에서 확장 가능하게 구성했습니다.
 
-- 🔗 GameplayTag System: [[LOP_GameplayTags.h](https://github.com/HaloTwo/LOP/blob/main/Source/LiseOfP/Public/LOP_GameplayTags.h)]
-- 🔗 ASC Systeam: [[LOP_AbilitySystem](https://github.com/HaloTwo/LOP/tree/main/Source/LiseOfP/Public/AbilitySystem)]
-- 
+🔗 GameplayTag System 코드: [[LOP_GameplayTags.h](https://github.com/HaloTwo/LOP/blob/main/Source/LiseOfP/Public/LOP_GameplayTags.h)]   
+   
+🔗 ASC Systeam 코드: [[LOP_AbilitySystem](https://github.com/HaloTwo/LOP/tree/main/Source/LiseOfP/Public/AbilitySystem)]   
+
 <details>
-<summary> GAS 아키텍쳐 / GA 폴더 구조</summary>
+<summary> GAS 아키텍쳐 </summary>
+  
+![GAS 아키텍쳐](Image/LOP_GAS.png)
+</details>
 
-![GAS 아키텍쳐](Image/LOP_GAS)
-![Player GA 폴더 구조](Image/GA폴더구조)
+<details>
+<summary> Player GA 폴더 구조</summary>
 
+![Player GA 폴더 구조](Image/GA폴더구조.png)
 </details>
 
 
@@ -124,7 +139,10 @@ GAS는 멀티플레이, 예측 처리, 네트워크 동기화까지 고려된 �
 - HitActor 캐싱으로 중복 타격 방지
 - Physical Material 기반 재질별 파티클 분기
 
->빠른 공격 모션에서도 피격 누락이 발생하지 않도록 하는 데 중점을 두었습니다.
+>빠른 공격 모션에서도 피격 누락이 발생하지 않도록 하는 데 중점을 두었습니다.   
+
+🔗 Combat Component 코드: [[Components/Combat](https://github.com/HaloTwo/LOP/tree/main/Source/LiseOfP/Private/Components/Combat)]
+
 
 ## 🧠 AI System (BT + EQS + GAS)
 
