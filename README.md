@@ -135,12 +135,17 @@ AI 역시 동일한 Ability 구조를 사용하도록 구성하여
 > 또한 공격 몽타주 구간 중 실제 타격 프레임에서만 판정을 수행하도록  
 > **Anim Notify State**를 사용해 충돌 활성 구간을 제어했습니다.
 
+> Sweep의 HitResult에서 ImpactPoint / ImpactNormal 정보를 활용하여  
+> 정확한 타격 지점을 얻을 수 있었고,  
+> 해당 위치에 피격 임팩트(VFX)를 생성하도록 구현했습니다.
+
 ### 구현 방식
 
 - `SweepMultiByChannel()` 사용
 - 이전 프레임 위치와 현재 위치를 보간한 궤적 기반 판정
 - **Anim Notify State**로 공격 유효 구간 제어
 - HitActor 캐싱으로 중복 타격 방지
+- HitResult의 ImpactPoint / Normal 기반 피격 위치 처리
 - Physical Material 기반 재질별 파티클 분기
 
 > 빠른 공격 모션에서도 피격 누락이 발생하지 않도록  
