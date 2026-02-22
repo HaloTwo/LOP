@@ -1,7 +1,8 @@
 # 🎮 P의 거짓 (Lies of P) 모작 포트폴리오
 
-## 📺 메인 이미지
-<img width="2554" height="1386" alt="Main" src="Image/BG.png" />
+
+# 🎥 Video
+[![영상 미리보기](https://img.youtube.com/vi/6_0rvUXyf8w/0.jpg)](https://youtu.be/6_0rvUXyf8w)
 
 ---
 
@@ -12,7 +13,7 @@
 
 > • 개발 인원: 1인 (개인 프로젝트)  
 > • 개발 기간: 2025.07.07 ~ 2025.09.21 (11주)  
-> • 개발 환경: Unreal Engine 5.4.4, C++, Blueprint  
+> • 개발 환경: Unreal Engine 5.4.4, Github   
 > • 장르: 3인칭 액션 RPG / 전투 시스템 중심  
 
 
@@ -25,9 +26,9 @@
 >콘텐츠가 확장되더라도 분기문이 증가하지 않는 구조를 설계하고자  
 >Unreal Engine의 Gameplay Ability System(GAS)을 기반으로 구현했습니다.
 
->또한, 임의로 시스템을 구성하기보다  
->엔진이 제공하는 공식 아키텍처를 깊이 이해하고  
->정석적인 방식으로 설계 경험을 쌓는 것을 목표로 했습니다.
+또한, 임의로 시스템을 구성하기보다  
+엔진이 제공하는 공식 아키텍처를 깊이 이해하고  
+정석적인 방식으로 설계 경험을 쌓는 것을 목표로 했습니다.
 
 <details>
 <summary>자세한 설계 의도 펼치기/닫기</summary>
@@ -64,11 +65,7 @@ GAS는 멀티플레이, 예측 처리, 네트워크 동기화까지 고려된 �
 로직 분기 증가가 아닌 Ability 추가 방식으로 확장되도록 설계했습니다.  
 이는 전투 콘텐츠가 늘어날수록 구조가 복잡해지는 문제를 방지하기 위함입니다.
 
----
 </details>
-
-# 🎥 Video
-[![영상 미리보기](https://img.youtube.com/vi/6_0rvUXyf8w/0.jpg)](https://youtu.be/6_0rvUXyf8w)
 
 ---
 
@@ -93,6 +90,20 @@ GAS는 멀티플레이, 예측 처리, 네트워크 동기화까지 고려된 �
 >또한 1인 프로젝트이기 때문에  
 >과도하게 복잡한 범용 구조보다는  
 >관리 가능한 선에서 확장성을 확보하는 것을 목표로 했습니다.
+
+코어 로직은 C++(ASC/Ability 베이스)로 구현하고, 파생 Ability는 C++/BP로 분리해 데이터·연출은 BP에서 확장 가능하게 구성했습니다.
+
+- 🔗 GameplayTag System: [[LOP_GameplayTags.h](https://github.com/HaloTwo/LOP/blob/main/Source/LiseOfP/Public/LOP_GameplayTags.h)]
+- 🔗 ASC Systeam: [[LOP_AbilitySystem](https://github.com/HaloTwo/LOP/tree/main/Source/LiseOfP/Public/AbilitySystem)]
+- 
+<details>
+<summary> GAS 아키텍쳐 / GA 폴더 구조</summary>
+
+![GAS 아키텍쳐](Image/LOP_GAS)
+![Player GA 폴더 구조](Image/GA폴더구조)
+
+</details>
+
 
 ## 🗡 Weapon Trace (무기 충돌 판정)
 
