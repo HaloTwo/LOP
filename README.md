@@ -1,11 +1,6 @@
 # 🎮 P의 거짓 (Lies of P) 모작 포트폴리오
 
 
-# 🎥 동영상
-[![영상 미리보기](https://img.youtube.com/vi/6_0rvUXyf8w/0.jpg)](https://youtu.be/6_0rvUXyf8w)
-
----
-
 # ⚔️ 프로젝트 개요
 > Lies of P에서 영감을 받은 GAS 기반 3D 액션 전투 시스템 구현 프로젝트  
 > 전투, AI, 게임플레이 아키텍처 구조 설계 중심
@@ -15,6 +10,9 @@
 > • 개발 기간: 2025.07.07 ~ 2025.09.21 (11주)  
 > • 개발 환경: Unreal Engine 5.4.4, Github   
 > • 장르: 3인칭 액션 RPG / 전투 시스템 중심  
+
+## 🎥 동영상
+[![영상 미리보기](https://img.youtube.com/vi/6_0rvUXyf8w/0.jpg)](https://youtu.be/6_0rvUXyf8w)
 
 
 ## 📑 목차
@@ -31,6 +29,7 @@
   - 🛠 프로젝트 최적화 (Optimization)
 - 🧪 게임플레이 GIF (Showcase)
 
+---
 
 # 🔍 GAS(Gameplay Ability System)를 선택한 이유
 
