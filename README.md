@@ -107,18 +107,20 @@ GAS는 멀티플레이, 예측 처리, 네트워크 동기화까지 고려된 �
 
 코어 로직은 C++(ASC/Ability 베이스)로 구현하고, 파생 Ability는 C++/BP로 분리해 데이터·연출은 BP에서 확장 가능하게 구성했습니다.
 
+
+
 🔗 GameplayTag System 코드: [[LOP_GameplayTags.h](https://github.com/HaloTwo/LOP/blob/main/Source/LiseOfP/Public/LOP_GameplayTags.h)]   
    
 🔗 ASC Systeam 코드: [[LOP_AbilitySystem](https://github.com/HaloTwo/LOP/tree/main/Source/LiseOfP/Public/AbilitySystem)]   
 
 <details>
-<summary> GAS 아키텍쳐 </summary>
+<summary> GAS 아키텍쳐 이미지 보기</summary>
   
 ![GAS 아키텍쳐](Image/LOP_GAS.png)
 </details>
 
 <details>
-<summary> Player GA 폴더 구조</summary>
+<summary> Player GA 폴더 구조 이미지 보기</summary>
 
 ![Player GA 폴더 구조](Image/GA폴더구조.png)
 </details>
