@@ -1,7 +1,7 @@
 # 🎮 P의 거짓 (Lies of P) 모작 포트폴리오
 
 
-# 🎥 Video
+# 🎥 동영상
 [![영상 미리보기](https://img.youtube.com/vi/6_0rvUXyf8w/0.jpg)](https://youtu.be/6_0rvUXyf8w)
 
 ---
@@ -16,18 +16,23 @@
 > • 개발 환경: Unreal Engine 5.4.4, Github   
 > • 장르: 3인칭 액션 RPG / 전투 시스템 중심  
 
----
 
-## 📑 Contents
-- [⚔ Combat Framework (GAS 기반 전투 구조)](#-combat-framework-gas-기반-전투-구조)
-- [🗡 Weapon Trace (무기 충돌 판정)](#-weapon-trace-무기-충돌-판정)
-- [🧠 AI System (BT + EQS + GAS)](#-ai-system-bt--eqs--gas)
-- [🎯 Target Lock-On](#-target-lock-on)
-- [🎒 Data Architecture](#-data-architecture)
-- [🧪 Gameplay GIF](#-gameplay-gif)
+## 📑 목차
+
+- 🔍 GAS(Gameplay Ability System)를 선택한 이유
+- 🎮 Core Systems (핵심 시스템)
+  - ⚔ 전투 프레임워크 (GAS 기반)
+  - 🗡 무기 충돌 판정 (Weapon Trace)
+  - 🧠 AI 시스템 (BT + EQS + GAS)
+  - 🎯 락온 시스템 (Target Lock-On)
+  - 🎒 데이터 아키텍처 (Data Architecture)
+  - 🧩 상호작용 시스템 (Interaction System)
+  - 🚀 비동기 로딩 & 레벨 전환 (Async Loading)
+  - 🛠 프로젝트 최적화 (Optimization)
+- 🧪 게임플레이 GIF (Showcase)
 
 
-# 🔍 왜 Gameplay Ability System(GAS)을 선택했는가
+# 🔍 GAS(Gameplay Ability System)를 선택한 이유
 
 >이번 프로젝트는 단순히 전투 기능을 구현하는 것이 아니라,  
 >**확장성과 유지보수성을 고려한 전투 아키텍처 설계**에 초점을 두었습니다.
@@ -79,10 +84,10 @@ GAS는 멀티플레이, 예측 처리, 네트워크 동기화까지 고려된 �
 
 ---
 
-# 🎮 Core Systems
+# 🎮 Core Systems (핵심 시스템)
 
 
-## ⚔ Combat Framework (GAS 기반 전투 구조)
+## ⚔ 전투 프레임워크 (GAS 기반)
 
 >이동, 공격, 구르기, 락온 등의 행동을 Ability 단위로 나누어 관리하고 있습니다.
 
@@ -120,7 +125,7 @@ GAS는 멀티플레이, 예측 처리, 네트워크 동기화까지 고려된 �
 </details>
 
 
-## 🗡 Weapon Trace (무기 충돌 판정)
+## 🗡 무기 충돌 판정 (Weapon Trace)
 
 >무기 판정은 단순 Overlap이 아니라  
 >Box Sweep 기반으로 구현했습니다.
@@ -144,8 +149,7 @@ GAS는 멀티플레이, 예측 처리, 네트워크 동기화까지 고려된 �
 🔗 Combat Component 코드: [[Components/Combat](https://github.com/HaloTwo/LOP/tree/main/Source/LiseOfP/Private/Components/Combat)]
 
 
-## 🧠 AI System (BT + EQS + GAS)
-
+## 🧠 AI 시스템 (BT + EQS + GAS)
 >적 AI는 Behavior Tree 기반으로 구성했습니다.  
 >공격은 플레이어와 동일하게 Ability를 사용하도록 설계했습니다.
 
@@ -163,7 +167,7 @@ GAS는 멀티플레이, 예측 처리, 네트워크 동기화까지 고려된 �
 >패턴을 추가할 때 코드를 수정하기보다  
 >데이터를 추가하는 방식으로 확장할 수 있도록 구성했습니다.
 
-## 🎯 Target Lock-On
+## 🎯 Target Lock-On 락온 시스템 (Target Lock-On)  
 
 - Sphere 기반 타겟 탐색
 - 거리 / 시야각 기반 후보 선택
@@ -173,7 +177,7 @@ GAS는 멀티플레이, 예측 처리, 네트워크 동기화까지 고려된 �
 >락온 상태를 Tag로 관리하여  
 >이동, 대시, 회피 로직이 자연스럽게 분기되도록 설계했습니다.
 
-## 🎒 Data Architecture
+## 🎒 데이터 아키텍처 (Data Architecture)
 
 >전투 관련 대부분의 정보는 DataAsset으로 관리합니다.
 
@@ -185,10 +189,60 @@ GAS는 멀티플레이, 예측 처리, 네트워크 동기화까지 고려된 �
 >코드 수정을 최소화하고,  
 >필요하면 블루프린트나 데이터 수정만으로 확장 가능하도록 설계했습니다.
 
+## 🧩 상호작용 시스템 (Interaction System)
+
+> 플레이어가 상호작용 범위에 진입하면 HUD에 입력 프롬프트를 표시하고,  
+> 지정된 키 입력 시 Ability를 통해 상호작용을 실행하는 구조로 구현했습니다.
+
+- InteractableBase 부모 클래스를 기반으로 상호작용 객체 공통화
+- Overlap 기반 범위 감지로 상호작용 대상 판별
+- GameplayTag를 활용한 상호작용 타입 관리
+- 입력 시 Interaction Ability 실행 구조
+- Delegate를 통해 HUD Prompt 표시 및 제거 처리
+
+> 현재는 보스룸 문(Door Interactable)에 Level Sequence 실행을 적용했으며,  
+> 동일한 패턴으로 아이템 획득, 레버, NPC 대화 등  
+> 다양한 상호작용 요소로 확장 가능하도록 부모-자식 구조로 설계했습니다.
+
+> 또한 상호작용 로직을 캐릭터에 직접 구현하지 않고  
+> Ability 기반으로 분리하여 전투 시스템(GAS)과 구조적 일관성을 유지했습니다.
+
+
+## 🚀 비동기 로딩 & 레벨 전환 (Async Loading)
+
+> 맵 규모로 인한 긴 로딩 시간을 줄이기 위해  
+> StreamableManager 기반 비동기 로딩 + Commit 전환 구조를 구현했습니다.
+
+- GameInstance에서 레벨을 GameplayTag로 매핑하여 관리
+- RequestAsyncLoad로 레벨 에셋을 선 비동기 로딩
+- 로딩 완료 시 Pending Level로만 보관
+- 연출 및 입력 종료 시점에 OpenLevel로 실제 전환(Commit)
+- UI는 Async Load Progress 값을 활용해 로딩 진행도 표시
+
+> 선로딩 후 전환 시점을 제어하는 구조를 통해  
+> 레벨 이동 시 발생하는 끊김을 최소화하고  
+> 보다 자연스러운 씬 전환이 가능하도록 설계했습니다.
+
+
+## 🛠 프로젝트 최적화 (Optimization)
+
+> 초기 빌드에서는 프레임 저하와 로딩 지연이 크게 발생하여  
+> 렌더링 및 씬 전반에 걸쳐 구조적 최적화를 적용했습니다.
+
+- Texture Streaming Pool 조정으로 VRAM 사용량 관리
+- Shadow 해상도 및 Cascade 수 감소로 GPU 부하 완화
+- Lumen 반사 비활성화로 렌더링 비용 절감
+- Early-Z PrePass 및 Occlusion Culling 활성화
+- LOD 전환 거리 조정으로 불필요한 드로우콜 감소
+- 과도한 Post Process 제거 후 최소 구성 유지
+
+> 최적화 적용 후 빌드 기준 약 40FPS → 100FPS 수준으로 개선되었으며,  
+> 플레이 중 프레임 드랍과 로딩 지연을 체감적으로 크게 줄일 수 있었습니다.
+
 ---
 
 
-# 🧪 Gameplay GIF
+# 🧪 게임플레이 GIF
 
 <details>
 <summary>GIF 펼치기/닫기</summary>
