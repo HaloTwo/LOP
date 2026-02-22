@@ -155,22 +155,43 @@ GAS는 멀티플레이, 예측 처리, 네트워크 동기화까지 고려된 �
 
 
 ## 🧠 AI 시스템 (BT + EQS + GAS)
->적 AI는 Behavior Tree 기반으로 구성했습니다.  
->공격은 플레이어와 동일하게 Ability를 사용하도록 설계했습니다.
 
->단순히 공격 애니메이션을 실행하는 구조가 아니라,  
->플레이어와 동일한 전투 시스템을 공유하도록 하여  
->구조를 통일하는 데 중점을 두었습니다.
+> 적 AI는 Behavior Tree 기반으로 구성했습니다.  
+> 공격은 플레이어와 동일하게 GameplayAbility를 사용하도록 설계했습니다.
+
+> 단순히 공격 애니메이션을 실행하는 구조가 아니라,  
+> AI가 GameplayAbility를 직접 호출하도록 하여  
+> 플레이어와 동일한 전투 시스템(GAS)을 공유하도록 구조를 통일했습니다.
 
 ### 구성
 
-- Behavior Tree 기반 상태 제어
-- EQS 기반 위치 탐색
-- Ability 기반 공격 실행
-- Phase를 DataAsset으로 분리
+- Behavior Tree 기반 상태 제어 (탐색 / 추적 / 전투)
+- EQS 기반 위치 탐색 및 전투 위치 선정
+- 거리 조건 기반 공격 선택 로직
+- 확률 기반 연속 공격 패턴 분기
+- AbilityTag 기반 공격 Ability 실행
+- Phase를 DataAsset으로 분리하여 패턴 확장 가능하도록 설계
 
->패턴을 추가할 때 코드를 수정하기보다  
->데이터를 추가하는 방식으로 확장할 수 있도록 구성했습니다.
+> 전투 AI는 거리, 상태, 확률 조건을 기반으로  
+> 공격 패턴이 분기되도록 구성했으며,  
+> BTTask에서 AbilityTag를 호출하여 공격을 실행하는 구조로 설계했습니다.  
+
+> 이를 통해 코드 수정 없이  
+> Ability와 데이터 추가만으로 새로운 패턴을 확장할 수 있도록 구성했습니다.
+
+<details>
+<summary>일반 몬스터 Behavior Tree 구조</summary>
+
+![AI_BehaviorTree](Image/AI_BT.png)
+
+</details>
+
+<details>
+<summary>보스 몬스터 Behavior Tree 구조</summary>
+
+![AI_BehaviorTree](Image/AI_Boss_BT.png)
+
+</details>
 
 ## 🎯 락온 전투 시스템 (Lock-On System)
 
