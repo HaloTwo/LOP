@@ -22,7 +22,7 @@
   - ⚔ 전투 프레임워크 (GAS 기반)
   - 🗡 무기 충돌 판정 (Weapon Trace)
   - 🧠 AI 시스템 (BT + EQS + GAS)
-  - 🎯 락온 시스템 (Target Lock-On)
+  - 🎯 락온 전투 시스템 (Lock-On System)
   - 🎒 데이터 아키텍처 (Data Architecture)
   - 🧩 상호작용 시스템 (Interaction System)
   - 🚀 비동기 로딩 & 레벨 전환 (Async Loading)
@@ -168,15 +168,18 @@ GAS는 멀티플레이, 예측 처리, 네트워크 동기화까지 고려된 �
 >패턴을 추가할 때 코드를 수정하기보다  
 >데이터를 추가하는 방식으로 확장할 수 있도록 구성했습니다.
 
-## 🎯 Target Lock-On 락온 시스템 (Target Lock-On)  
+## 🎯 락온 전투 시스템 (Lock-On System)
 
-- Sphere 기반 타겟 탐색
-- 거리 / 시야각 기반 후보 선택
-- Camera Modifier 기반 회전 보정
-- GameplayTag로 락온 상태 관리
+- Sphere 기반 타겟 탐색 및 후보 선정
+- 거리 / 시야각 기반 우선 타겟 선택 로직
+- Camera Modifier 기반 대상 방향 회전 보정
+- GameplayTag로 Lock-On 상태 관리
+- 락온 여부에 따라 이동 / 회피 입력 벡터 분기 처리
+- 공격 Ability가 락온 대상 기준으로 실행되도록 타겟 고정
 
->락온 상태를 Tag로 관리하여  
->이동, 대시, 회피 로직이 자연스럽게 분기되도록 설계했습니다.
+> 단순 카메라 보조 기능이 아닌,  
+> 락온 상태에 따라 이동, 대시, 회피, 공격 로직이 함께 변경되는  
+> 전투 상태 기반 시스템으로 설계했습니다.
 
 ## 🎒 데이터 아키텍처 (Data Architecture)
 
