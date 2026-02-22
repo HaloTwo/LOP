@@ -118,15 +118,14 @@ GAS는 멀티플레이, 예측 처리, 네트워크 동기화까지 고려된 �
 🔗 ASC Systeam 코드: [[LOP_AbilitySystem](https://github.com/HaloTwo/LOP/tree/main/Source/LiseOfP/Public/AbilitySystem)]   
 
 <details>
-<summary> GAS 아키텍쳐 이미지 보기</summary>
-  
+<summary>아키텍처 & 폴더 구조 이미지 보기</summary>
+
+###  GAS 아키텍처
 ![GAS 아키텍쳐](Image/LOP_GAS.png)
-</details>
 
-<details>
-<summary> Player GA 폴더 구조 이미지 보기</summary>
-
+### 📁 Player GA 폴더 구조
 ![Player GA 폴더 구조](Image/GA폴더구조.png)
+
 </details>
 
 
@@ -188,15 +187,12 @@ GAS는 멀티플레이, 예측 처리, 네트워크 동기화까지 고려된 �
 > 확장할 수 있도록 구성했습니다.
 
 <details>
-<summary>일반 몬스터 Behavior Tree 구조 (기본 전투 AI)</summary>
+<summary>Behavior Tree 구조 (일반 몬스터 + 보스 확장 AI)</summary>
 
+### 일반 몬스터 BT (기본 전투 AI)
 ![AI_BehaviorTree](Image/AI_BT.png)
 
-</details>
-
-<details>
-<summary>보스 몬스터 Behavior Tree 구조 (Phase + 패턴 확장 AI)</summary>
-
+### 보스 BT (Phase + 패턴 확장 구조)
 ![AI_Boss_BehaviorTree](Image/AI_Boss_BT.png)
 
 </details>
@@ -249,12 +245,21 @@ GAS는 멀티플레이, 예측 처리, 네트워크 동기화까지 고려된 �
 데이터 수정만으로 확장할 수 있도록 구성했습니다.
 
 <details>
-<summary>DataAsset & DataTable 구조</summary>
+<summary>데이터 구조 - 아이템  /  입력 / 플레이어 / 무기 / VFX</summary>
 
-![Input Config](Image/Data_InputConfig.png)
-![Player Data](Image/Data_PlayerData.png)
-![Weapon Data](Image/Data_WeaponData.png)
+### 🎒 아이템 데이터 테이블 (Item DataTable)
 ![Item DataTable](Image/DataTable.png)
+
+### 🎮 입력 설정 (Input Config)
+![Input Config](Image/InputConfig.png)
+
+### 👤 플레이어 데이터 (StartUp Ability & Effects)
+![Player Data](Image/PlayerData.png)
+
+### 🗡 무기 데이터 (Anim Layer + Ability Set)
+![Weapon Data](Image/WeaponData.png)
+
+### 💥 타격 VFX 데이터 (Surface Impact VFX DataAsset)
 ![VFXDataAsset](Image/VFXDataAsset.png)
 
 </details>
